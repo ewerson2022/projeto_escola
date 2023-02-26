@@ -4,6 +4,7 @@ from django.urls import path, include
 from escola.views import AlunoViewSet, CursoviewSet, MatriculaviewSet, ListaMatriculasAluno, listaalunomatriculados
 from rest_framework import routers
 
+
 router = routers.DefaultRouter()
 router.register('alunos', AlunoViewSet,basename= 'alunos')
 router.register('cursos', CursoviewSet, basename= 'cursos')

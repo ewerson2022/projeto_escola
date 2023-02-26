@@ -7,15 +7,18 @@ class AlunoSerializer(serializers.ModelSerializer):
         model = Aluno
         fields = ['id', 'nome','rg', 'cpf', 'data_nascimento']
         
+        
 class CursoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Curso
         fields = '__all__'
 
+
 class MatriculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
         exclude = []
+        
         
 class ListaMatriculasAlunoSerializer(serializers.ModelSerializer):
     curso = serializers.ReadOnlyField(source='curso.descricao')
@@ -25,6 +28,7 @@ class ListaMatriculasAlunoSerializer(serializers.ModelSerializer):
         fields = ['curso','periodo']
     def get_periodo(self,obj):
         return obj.get_periodo_display()
+    
     
 class ListaAlunoMatriculadosSerializer(serializers.ModelSerializer):
     aluno_nome = serializers.ReadOnlyField(source='aluno.nome')
